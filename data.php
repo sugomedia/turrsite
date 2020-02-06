@@ -14,5 +14,5 @@
 	$pwdchars = '0123456789abcdefghijklmnopqrstuvwzxyABCDEFGHIJKLMNOPQRSTUVWZXY!@&*$%';
 	$password_regexp = preg_quote('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z]{8,30}$/');
 	$basic = "avatar/basic.png";
-	$pagename='Türr-Site';
+	$pagename='Türr-Site!';
 ?>
