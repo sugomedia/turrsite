@@ -1,0 +1,100 @@
+.subuserlist{
+  height: 55px;
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  border-bottom:2px dotted #6c756e;
+}
+.userlist_available{
+  border-left: 5px limegreen solid;
+  
+}
+
+.userlist_busy{
+  border-left: 5px red solid;
+}
+
+.userlistavatar{
+  height: 40px;
+  width: 40px;
+  background: #fff;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 5%;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.userlistmsg{
+  font-size: 80%;
+  color: gray;
+}
+
+.userlistname{
+  font-weight: bold;
+}
+
+.useravatar{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #fff;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-shadow: 2px 2px black; 
+}
+
+.username{
+  color:#fff;
+  font-weight: bold;
+  font-size: 130%;
+  width: 100%;
+  text-align: center;
+}
+
+.posts{
+  background: #edf0f5;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border:1px solid #cbced4;
+  
+}
+.posts2{
+  background: rgb(202, 202, 202);
+  margin: 10px;
+  margin-bottom: 40px;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 1px black;
+}
+
+.postavatar{
+  height: 50px;
+  width: 50px;
+  background: #fff;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 50px;
+}
+.postusername{
+  margin-left: 7px;
+}
+.postdate{
+  float:right;
+}
+.postcontent{
+  background-color: #fff;
+  margin: 2px;
+  width:100%;
+}
+#share{
+  width: 100%;
+  min-height: 30px;
+}
+#groups :hover{
+  
+}

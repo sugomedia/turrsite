@@ -1,0 +1,1 @@
+<textarea name="newcomment"></textarea>
