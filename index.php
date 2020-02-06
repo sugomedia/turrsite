@@ -1,3 +1,6 @@
+<!-- ------------------------------------ -->
+<!-- Bajai SZC Türr István Szakgimnáziuma -->
+<!-- ------------------------------------ -->
 <!DOCTYPE html>
 <?php
 	session_start();
