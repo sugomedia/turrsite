@@ -1,5 +1,7 @@
 <!-- ------------------------------------ -->
 <!-- Bajai SZC Türr István Szakgimnáziuma -->
+
+<!-- Varga Ervin -->
 <!-- ------------------------------------ -->
 <!DOCTYPE html>
 <?php
