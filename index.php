@@ -1,5 +1,7 @@
 <!-- ------------------------------------ -->
 <!-- Bajai SZC Türr István Szakgimnáziuma -->
+
+<!-- Fuszenecker Fanni                    -->
 <!-- ------------------------------------ -->
 <!DOCTYPE html>
 <?php
