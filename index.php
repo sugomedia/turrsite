@@ -1,7 +1,10 @@
 <!-- ------------------------------------ -->
 <!-- Bajai SZC Türr István Szakgimnáziuma -->
 
+
 <!-- Varga Ervin -->
+<!-- Fuszenecker Fanni                    -->
+<!-- Dr. Török Tamás -->
 <!-- ------------------------------------ -->
 <!DOCTYPE html>
 <?php
