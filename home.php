@@ -4,7 +4,7 @@
 <div id="container" class = "container-fluid">
   <div id="header">
       <div id="logo" class="col-xs-12 col-sm-1">
-           <img src="img/logo.png" class="img-responsive" alt="Turr-Site">
+           <a href="index.php?pg=home"><img src="img/logo.png" class="img-responsive" alt="Turr-Site"></a>
            </div>    
            <div class="col-xs-12 col-sm-2 title">
            <?php

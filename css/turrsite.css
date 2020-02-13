@@ -9,7 +9,7 @@
     }
     #pagecontent{
         background-color: #edf0f5;
-        min-height: 500px;
+        min-height: 700px;
         margin-top: 56px;
         z-index:8;
     }
@@ -30,6 +30,7 @@
        position: fixed;
        width: 100%;
         z-index: 10;
+        box-shadow: 0 0 10px black;
     }
     .title{
         background-color:#173058;
@@ -65,6 +66,7 @@
         background-color: ghostwhite;
         box-shadow: 0 0 10px black;
         z-index: 1;
+        min-height: 700px;
     }
 
     nav{
@@ -119,21 +121,25 @@
         margin-left: 30px;
     }
     #leftside{
-        background-color:  rgb(244, 225, 190);
+       background-color:  rgb(244, 225, 190);
        border-radius: 5px;
-       
+       color: black;
+       min-height: 700px;
+       box-shadow: 0 0 10px black;
     }
     #rightside{
         background-color:     rgb(244, 225, 190);
         padding-top: 10px;
         border-radius: 5px;
         z-index: 0;
+        min-height: 700px;
+        box-shadow: 0 0 10px black;
     }
     #footer{
         text-align: center;
         background-color: #173058;
         color: white;
-        
+       
     }
 
 
@@ -159,11 +165,11 @@
         margin: 10px;
         margin-left: 100px;
     }
-    .statusUpdate{
-        margin-right: 20px;
-        margin-left: 20px;
-    }
 
     #container{
         background-color: #edf0f5;
+        
+    }
+    #csoportcim{
+        margin-bottom: 40px;
     }

@@ -192,7 +192,22 @@ a{
   .register-info-box p{
       margin-bottom: 20px;
   }
+  .gomb3{
+      width: 100%;
+      background: #444444;
+      color: #f9f9f9;
+      padding: 8px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor:pointer;
+      margin-bottom: 10px;
+      display: block;
+      text-align: center;
+  }
+  .gomb3:hover{
+    background: #72abe0;
 
+  }
 
 
 
