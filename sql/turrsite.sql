@@ -2,10 +2,10 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2020. Feb 13. 12:10
+-- Gép: localhost
+-- Létrehozás ideje: 2020. Feb 13. 13:04
 -- Kiszolgáló verziója: 10.4.6-MariaDB
--- PHP verzió: 7.3.8
+-- PHP verzió: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -178,9 +178,16 @@ CREATE TABLE `messages` (
   `ID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `mesdate` datetime NOT NULL,
-  `IDmessages` int(11) NOT NULL,
+  `message` text COLLATE utf8_hungarian_ci NOT NULL,
   `sendtoID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `messages`
+--
+
+INSERT INTO `messages` (`ID`, `userID`, `mesdate`, `message`, `sendtoID`) VALUES
+(1, 10, '2020-02-13 12:57:12', 'Helló Teszt2!', 12);
 
 -- --------------------------------------------------------
 
@@ -272,8 +279,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `fullname`, `email`, `password`, `reg`, `last`, `avatar`, `status`, `omID`, `gender`) VALUES
-(10, 'teszt1', 'teszt1@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-02-13 11:39:47', '', 0, 1, 'ferfi'),
-(12, 'teszt2', 'teszt2@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-01-15 00:00:00', '', 1, 2, 'no'),
+(10, 'teszt1', 'teszt1@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-02-13 12:48:11', '', 1, 1, 'ferfi'),
+(12, 'teszt2', 'teszt2@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-02-13 12:58:03', '', 0, 2, 'no'),
 (13, 'teszt3', 'teszt3@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-01-15 00:00:00', '', 1, 3, 'no'),
 (14, 'teszt4', 'teszt4@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-01-15 00:00:00', '', 1, 0, 'ferfi'),
 (15, 'teszt5', 'teszt5@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-16 00:00:00', '2020-01-16 00:00:00', '', 0, 0, 'ferfi'),
@@ -348,8 +355,10 @@ ALTER TABLE `interest`
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `userID` (`userID`),
-  ADD KEY `IDmessages` (`IDmessages`),
-  ADD KEY `sendtoID` (`sendtoID`);
+  ADD KEY `IDmessages` (`message`(1024)),
+  ADD KEY `sendtoID` (`sendtoID`),
+  ADD KEY `message` (`message`(1024)),
+  ADD KEY `message_2` (`message`(1024));
 
 --
 -- A tábla indexei `omnumbers`
@@ -430,7 +439,7 @@ ALTER TABLE `interest`
 -- AUTO_INCREMENT a táblához `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `omnumbers`
@@ -471,13 +480,6 @@ ALTER TABLE `votes`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`ID`);
-
---
--- Megkötések a táblához `contacts`
---
-ALTER TABLE `contacts`
-  ADD CONSTRAINT `contacts_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`ID`),
-  ADD CONSTRAINT `contacts_ibfk_2` FOREIGN KEY (`whoID`) REFERENCES `users` (`ID`);
 
 --
 -- Megkötések a táblához `events`
