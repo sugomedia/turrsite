@@ -1,4 +1,5 @@
-<h3>Jelszó módosítás</h3><hr>
+<h1>Jelszó módosítás</h1>
+<hr>
 
 <?php
   if(isset($_POST['modosit'])){
