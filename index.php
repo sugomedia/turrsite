@@ -1,6 +1,13 @@
 <!-- ------------------------------------ -->
 <!-- Bajai SZC Türr István Szakgimnáziuma -->
 <!-- Készítők:                          -->
+
+
+<!-- Rekettye István -->
+<!-- Tábori Erik-->
+<!-- Varga Ervin -->
+<!-- Fuszenecker Fanni                    -->
+<!-- Dr. Török Tamás -->
 <!-- ------------------------------------ -->
 <!DOCTYPE html>
 <?php
