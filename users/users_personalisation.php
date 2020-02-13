@@ -12,9 +12,10 @@ echo '<div class="useravatar" style="background-image:url('.$avatar.')"></div>
     <option value="1">Elérhető</option>
     <option value="2">Elfoglalt</option>
     <option value="0">Rejtett</option>
-</select>
+</select><br>
 
-<a href="?pg=users_profile" class="btn btn-primary">Adatok Módosítása</a>
+<a href="?pg=home&func=users/users_passmod" class="btn btn-primary">Jelszó módosítása</a><br>
+<a href="?pg=home&func=users/users_profile" class="btn btn-primary">Adatok módosítása</a><br>
 <hr>';
  
 ?>

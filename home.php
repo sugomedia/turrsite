@@ -27,9 +27,9 @@ echo '<span>'.$pagename.'</span><br><p>'.$title.'</p>';
           ?>
       </div>
       <div id="center" class="col-xs-12 col-sm-6">
-        <?php 
-        include "posts/posts_create.php";
-        include "posts/posts_list.php";
+        <?php
+         include "function_loader.php";
+       
         ?>
       </div>
       <div id="rightside" class="col-xs-12 col-sm-3">
