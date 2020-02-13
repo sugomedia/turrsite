@@ -5,7 +5,7 @@
   <div id="header">
       <div id="logo" class="col-xs-12 col-sm-1">
            <img src="img/logo.png" class="img-responsive" alt="Turr-Site">
-           </div>
+           </div>    
            <div class="col-xs-12 col-sm-2 title">
            <?php
 echo '<span>'.$pagename.'</span><br><p>'.$title.'</p>';
@@ -13,10 +13,12 @@ echo '<span>'.$pagename.'</span><br><p>'.$title.'</p>';
 
 
 ?>
-      </div>
+
+      </div>    
       <nav class="col-xs-12 col-sm-9">
         <?php include("menu.php");?>  
       </nav>
+      
   </div>
   <div id="pagecontent">
 
@@ -27,9 +29,9 @@ echo '<span>'.$pagename.'</span><br><p>'.$title.'</p>';
           ?>
       </div>
       <div id="center" class="col-xs-12 col-sm-6">
-        <?php 
-        include "posts/posts_create.php";
-        include "posts/posts_list.php";
+        <?php
+         include "function_loader.php";
+       
         ?>
       </div>
       <div id="rightside" class="col-xs-12 col-sm-3">

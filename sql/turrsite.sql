@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2.1
--- http://www.phpmyadmin.net
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
 --
--- Gép: localhost
--- Létrehozás ideje: 2020. Jan 23. 10:59
--- Kiszolgáló verziója: 5.7.26-0ubuntu0.16.04.1
--- PHP verzió: 5.6.40-7+ubuntu16.04.1+deb.sury.org+1
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2020. Feb 13. 12:10
+-- Kiszolgáló verziója: 10.4.6-MariaDB
+-- PHP verzió: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -55,8 +57,18 @@ INSERT INTO `comments` (`ID`, `userID`, `commentdate`, `comment`, `postID`) VALU
 CREATE TABLE `contacts` (
   `ID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
-  `whoID` int(11) NOT NULL
+  `whoID` int(11) NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `contacts`
+--
+
+INSERT INTO `contacts` (`ID`, `userID`, `whoID`, `status`) VALUES
+(1, 10, 12, 1),
+(2, 10, 13, 1),
+(3, 10, 15, 1);
 
 -- --------------------------------------------------------
 
@@ -70,6 +82,17 @@ CREATE TABLE `events` (
   `userID` int(11) NOT NULL,
   `event` varchar(100) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `events`
+--
+
+INSERT INTO `events` (`ID`, `eventdate`, `userID`, `event`) VALUES
+(1, '2020-02-13 12:04:37', 10, 'Ismerősnek jelölte!'),
+(2, '2020-02-13 12:04:44', 10, 'Ismerősnek jelölte!'),
+(3, '2020-02-13 12:05:40', 10, 'Ismerősnek jelölte!'),
+(4, '2020-02-13 12:08:39', 10, 'Ismerősnek jelölte!'),
+(5, '2020-02-13 12:09:53', 10, 'Ismerősnek jelölte!');
 
 -- --------------------------------------------------------
 
@@ -249,7 +272,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `fullname`, `email`, `password`, `reg`, `last`, `avatar`, `status`, `omID`, `gender`) VALUES
-(10, 'teszt1', 'teszt1@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-01-15 00:00:00', '', 0, 1, 'ferfi'),
+(10, 'teszt1', 'teszt1@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-02-13 11:39:47', '', 0, 1, 'ferfi'),
 (12, 'teszt2', 'teszt2@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-01-15 00:00:00', '', 1, 2, 'no'),
 (13, 'teszt3', 'teszt3@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-01-15 00:00:00', '', 1, 3, 'no'),
 (14, 'teszt4', 'teszt4@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-01-15 00:00:00', '', 1, 0, 'ferfi'),
@@ -372,61 +395,73 @@ ALTER TABLE `votes`
 --
 ALTER TABLE `comments`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT a táblához `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT a táblához `events`
 --
 ALTER TABLE `events`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT a táblához `files`
 --
 ALTER TABLE `files`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT a táblához `groups`
 --
 ALTER TABLE `groups`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT a táblához `interest`
 --
 ALTER TABLE `interest`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT a táblához `messages`
 --
 ALTER TABLE `messages`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT a táblához `omnumbers`
 --
 ALTER TABLE `omnumbers`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT a táblához `polls`
 --
 ALTER TABLE `polls`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT a táblához `posts`
 --
 ALTER TABLE `posts`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT a táblához `votes`
 --
 ALTER TABLE `votes`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- Megkötések a kiírt táblákhoz
 --
@@ -474,6 +509,7 @@ ALTER TABLE `messages`
 --
 ALTER TABLE `votes`
   ADD CONSTRAINT `votes_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `polls` (`votesID`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
