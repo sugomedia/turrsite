@@ -75,37 +75,44 @@
             return $this->connection->insert_id+1;
         }
 
-        public function usersConnectionList($what, $p){
+        public function usersConnectionList($what, $p, $c, $t, $txt){
             if(!empty($p))
             {
                 $actions=explode('|', $p);
             }
             if(empty($what)) $what = $this->queryresult;
 
-            echo '<div class="usersConnectionList">';
+            echo '<div class="usersConnectionList"><div class="panel panel-'.$c.'"><div class="panel-heading">'.$t.'</div><div class="panel-body">';
             
-            foreach($what as $value){
-                if($value['avatar'] == ""){
-                    $avatar = $GLOBALS['basic'];
-                  } else {
-                    $avatar = $value['avatar'];
-                  }
-
-                echo '<div class="subUsersConnectionList">
-                <div class="userlistavatar" style="background-image:url('.$avatar.')"></div>
-                <div class="userlistname">'.$value['fullname'].'</div>
-                ';
-                
-                if(!empty($actions)){
-                    if(in_array('a', $actions)){
-                        echo '<a href="?pg=events_friendrequest&friendID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-plus"></div></a>';
+            if(empty($txt)){ 
+                foreach($what as $value){
+                    if($value['avatar'] == ""){
+                        $avatar = $GLOBALS['basic'];
+                    } else {
+                        $avatar = $value['avatar'];
                     }
+
+                    echo '<div class="subUsersConnectionList">
+                    <div class="userlistavatar" style="background-image:url('.$avatar.')"></div>
+                    <div class="userlistname">'.$value['fullname'].'</div>
+                    ';
+                    
+                    if(!empty($actions)){
+                        if(in_array('a', $actions)){
+                            echo '<a href="?pg=events_friendrequest&friendID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-plus"></div></a>';
+                        }
+
+                        if(in_array('b', $actions)){
+                            echo '<a href="?pg=events_blockUsers&blockID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-ban-circle"></div></a>';
+                        }
+                    }
+
+                    echo '</div>';
                 }
-
-                echo '</div>';
+            } else {
+                echo $txt;
             }
-
-            echo '</div>';
+            echo '</div></div></div>';
         }
         
         public function toTable($param){

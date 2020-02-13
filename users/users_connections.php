@@ -1,5 +1,23 @@
 <?php
+    //0 = block; 1 = request; 2 = friend
+
     $uid = $_SESSION['uid']; //A felhasználó lementett ID-ja/je
+
+    //kik a barátok
+    //$db->query("SELECT * FROM contacts WHERE userID = $uid AND status = 2");
+    
+
+    //blockolt felhasználók
+    //$db->query("SELECT * FROM contacts WHERE userID = $uid AND status = 0");
+
+    //beérkezett barátkérelmek
+    $db->query("SELECT * FROM contacts WHERE whoID = $uid AND status = 1");
+
+    if($db->numRows() == 0){
+        $db->usersConnectionList('','', 'info', 'Ismerős felkérés', 'Nincsen barát felkérésed');
+    } else {
+        
+    }
 
     //lekérdezünk minden olyan contactot ahol a felhasználó megjelenik
     $db->query("SELECT * FROM contacts WHERE userID = $uid OR whoID = $uid");
@@ -9,7 +27,7 @@
     if($db->numRows() == 0){
         $db->query("SELECT ID, fullname, avatar FROM users WHERE ID <> $uid");
 
-        $db->usersConnectionList('','a');
+        $db->usersConnectionList('','a|b', 'default', 'Új ismerősök', '');
     } else /* Különben */{
         $what = array(); //létrehozunk egy tömböt
 
@@ -33,6 +51,6 @@
             }
         }
 
-        $db->usersConnectionList($what,'a');
+        $db->usersConnectionList($what,'a|b', 'default', 'Új ismerősök', '');
     }
 ?>
