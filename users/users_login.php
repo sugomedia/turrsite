@@ -11,7 +11,7 @@
         </div>
                             
         <div class="white-panel">
-            <div id="logo" class="col-xs-12 col-sm-2">
+            <div id="loginlogo" class="col-xs-12 col-sm-2">
                 <img src="img/logo.png" class="img-responsive" alt="Turr-Site">
             </div>
             <h2 id="cim">Türr-Site</h2>

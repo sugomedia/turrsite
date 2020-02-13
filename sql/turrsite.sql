@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2020. Feb 13. 12:00
+-- Létrehozás ideje: 2020. Feb 13. 12:10
 -- Kiszolgáló verziója: 10.4.6-MariaDB
 -- PHP verzió: 7.3.8
 
@@ -57,8 +57,18 @@ INSERT INTO `comments` (`ID`, `userID`, `commentdate`, `comment`, `postID`) VALU
 CREATE TABLE `contacts` (
   `ID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
-  `whoID` int(11) NOT NULL
+  `whoID` int(11) NOT NULL,
+  `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `contacts`
+--
+
+INSERT INTO `contacts` (`ID`, `userID`, `whoID`, `status`) VALUES
+(1, 10, 12, 1),
+(2, 10, 13, 1),
+(3, 10, 15, 1);
 
 -- --------------------------------------------------------
 
@@ -72,6 +82,17 @@ CREATE TABLE `events` (
   `userID` int(11) NOT NULL,
   `event` varchar(100) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `events`
+--
+
+INSERT INTO `events` (`ID`, `eventdate`, `userID`, `event`) VALUES
+(1, '2020-02-13 12:04:37', 10, 'Ismerősnek jelölte!'),
+(2, '2020-02-13 12:04:44', 10, 'Ismerősnek jelölte!'),
+(3, '2020-02-13 12:05:40', 10, 'Ismerősnek jelölte!'),
+(4, '2020-02-13 12:08:39', 10, 'Ismerősnek jelölte!'),
+(5, '2020-02-13 12:09:53', 10, 'Ismerősnek jelölte!');
 
 -- --------------------------------------------------------
 
@@ -379,13 +400,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT a táblához `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `events`
 --
 ALTER TABLE `events`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT a táblához `files`

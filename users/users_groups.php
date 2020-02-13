@@ -1,5 +1,6 @@
 <?php
 echo '
+<span>Csoportjaim:</span>
 <div class="usersgroup">';
     $db->query("SELECT * FROM groups");
 
@@ -15,7 +16,7 @@ echo '
 
             for($i = 0; $i < sizeof($IDs); $i++){
                 if(intval($IDs[$i]) == $uid){
-                    $str .= '<div class="goups">' . $value['groupname'] . '</div>';
+                    $str .= '<div class="groups">' . $value['groupname'] . '</div>';
                     $csopibanvan = true;
                     break;
                 }
