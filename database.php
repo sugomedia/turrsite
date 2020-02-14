@@ -105,6 +105,14 @@
                         if(in_array('b', $actions)){
                             echo '<a href="?pg=events_blockUsers&blockID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-ban-circle"></div></a>';
                         }
+
+                        if(in_array('ac', $actions)){
+                            echo '<a href="?pg=events_friendAccept&acceptID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-ok"></div></a>';
+                        }
+
+                        if(in_array('deny', $actions)){
+                            echo '<a href="?pg=events_friendDeny&denyID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-remove"></div></a>';
+                        }
                     }
 
                     echo '</div>';

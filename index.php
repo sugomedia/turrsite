@@ -7,6 +7,8 @@
 <!-- Tábori Erik-->
 <!-- Varga Ervin -->
 <!-- Fuszenecker Fanni                    -->
+<!-- Lázár Krisztián                    -->
+<!-- Krizsák Zoltán                     -->
 <!-- Dr. Török Tamás -->
 <!-- ------------------------------------ -->
 <!DOCTYPE html>
