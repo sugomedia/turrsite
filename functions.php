@@ -88,7 +88,7 @@
 					$allowedtypes = explode(',', $data[1]);
 					break;								
 				case 'filename':
-					$filename = $data[1].'.'.$ext;
+					$filename = $data[1];
 					break;				
 			}
 		}
