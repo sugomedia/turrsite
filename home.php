@@ -35,8 +35,12 @@ echo '<span>'.$pagename.'</span><br><p>'.$title.'</p>';
         ?>
       </div>
       <div id="rightside" class="col-xs-12 col-sm-3">
-      <div class="userslist">
-      <?php include "users/users_list.php";?>
+        <div class="form-group"> 
+          <input type="text" id="quicksearch" class="usersearch" placeholder="Keresés...">
+        </div>
+        
+        <div class="userslist">
+          <?php include "users/users_list.php";?>
         </div>
       </div>
               
