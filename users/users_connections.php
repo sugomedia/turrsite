@@ -1,6 +1,6 @@
-<h3>Kapcsolatok
+<h3>Kapcsolatok</h3>
 <input type="text" id="quicksearch2" class="usersearch" placeholder="Keresés...">
-</h3><hr>
+<hr>
 <?php
     //0 = block; 1 = request; 2 = friend
 
