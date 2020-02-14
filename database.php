@@ -74,7 +74,63 @@
         public function nextID(){
             return $this->connection->insert_id+1;
         }
-        
+
+        public function usersConnectionList($what, $p, $c, $t, $txt){
+            if(!empty($p))
+            {
+                $actions=explode('|', $p);
+            }
+            if(empty($what)) $what = $this->queryresult;
+
+            echo '<div class="usersConnectionList"><div class="panel panel-'.$c.'"><div class="panel-heading">'.$t.'</div><div class="panel-body">';
+            
+            if(empty($txt)){ 
+                foreach($what as $value){
+                    if($value['avatar'] == ""){
+                        $avatar = $GLOBALS['basic'];
+                    } else {
+                        $avatar = $value['avatar'];
+                    }
+
+                    echo '<div class="subUsersConnectionList">
+                    <div class="userlistavatar" style="background-image:url('.$avatar.')"></div>
+                    <div class="userlistname">'.$value['fullname'].'</div>
+                    ';
+                    
+                    if(!empty($actions)){
+                        if(in_array('a', $actions)){
+                            echo '<a href="?pg=events_friendrequest&friendID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-plus"></div></a>';
+                        }
+
+                        if(in_array('b', $actions)){
+                            echo '<a href="?pg=events_blockUsers&blockID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-ban-circle"></div></a>';
+                        }
+
+                        if(in_array('ac', $actions)){
+                            echo '<a href="?pg=events_friendAccept&acceptID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-ok"></div></a>';
+                        }
+
+                        if(in_array('deny', $actions)){
+                            echo '<a href="?pg=events_friendDeny&denyID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-remove"></div></a>';
+                        }
+
+                        if(in_array('r', $actions)){
+                            echo '<a href="?pg=events_friendRemove&removeID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-remove-sign"></div></a>';
+                        }
+
+                        if(in_array('ub', $actions)){
+                            echo '<a href="?pg=events_unBlock&unblockID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-ok-sign"></div></a>';
+                        }
+                    }
+
+                    echo '</div>';
+                }
+            } else {
+                echo $txt;
+            }
+            echo '</div></div></div>';
+        } 
+
         public function toTable($param){
             if(!empty($param))
             {
