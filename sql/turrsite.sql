@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2020. Feb 14. 09:25
+-- Létrehozás ideje: 2020. Feb 14. 11:04
 -- Kiszolgáló verziója: 10.4.6-MariaDB
 -- PHP verzió: 7.3.8
 
@@ -146,17 +146,18 @@ CREATE TABLE `groups` (
   `groupname` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `groupdate` datetime NOT NULL,
   `ownerID` int(11) NOT NULL,
-  `userID` text COLLATE utf8_hungarian_ci NOT NULL
+  `userID` text COLLATE utf8_hungarian_ci NOT NULL,
+  `comment` text COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `groups`
 --
 
-INSERT INTO `groups` (`ID`, `groupname`, `groupdate`, `ownerID`, `userID`) VALUES
-(1, 'teszt1', '2020-01-20 00:00:00', 10, '11;10;15;'),
-(2, 'tesztkettedik', '2020-01-20 00:00:00', 12, '12;11;20;'),
-(3, 'java', '2020-01-20 00:00:00', 14, '20;11;16;18;17;10;');
+INSERT INTO `groups` (`ID`, `groupname`, `groupdate`, `ownerID`, `userID`, `comment`) VALUES
+(1, 'teszt1', '2020-01-20 00:00:00', 10, '11;10;15;', ''),
+(2, 'tesztkettedik', '2020-01-20 00:00:00', 12, '12;11;20;', ''),
+(3, 'java', '2020-01-20 00:00:00', 14, '20;11;16;18;17;10;', '');
 
 -- --------------------------------------------------------
 
@@ -307,7 +308,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `fullname`, `email`, `password`, `reg`, `last`, `avatar`, `status`, `omID`, `gender`) VALUES
-(10, 'teszt1', 'teszt1@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-02-13 12:48:11', '', 1, 1, 'ferfi'),
+(10, 'teszt1', 'teszt1@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-02-14 10:01:25', '', 1, 1, 'ferfi'),
 (12, 'teszt2', 'teszt2@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-02-13 12:58:03', '', 0, 2, 'no'),
 (13, 'teszt3', 'teszt3@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-01-15 00:00:00', '', 1, 3, 'no'),
 (14, 'teszt4', 'teszt4@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '2020-01-15 00:00:00', '2020-01-15 00:00:00', '', 1, 0, 'ferfi'),

@@ -82,12 +82,23 @@ echo '
   </div>
  
   <label for="">Profilkép Változtatása:</label>
- <br />
-<input type="file" name="fileToUpload" id="fileToUpload"><br />
+ <br /> ';
+
+if (empty($res[0]['avatar']))
+{
+  echo '<input type="file" name="fileToUpload" id="fileToUpload"><br />';
+}
+else
+{
+  echo'<img src="'.$res[0]['avatar'].'" class="img img-thumbnail"><br>
+  <a href="?pg=home&func=users/avatardel" class="btn btn-danger">Profilkép törlése</a><br><br> ';
+}
+
+
+echo '
   <div class="form-group">
     <input type="submit" name="modosit" value="Módosít" class="btn btn-primary">
   </div>
 </form>
   ';
   ?>
- 
