@@ -15,7 +15,8 @@ echo '<div class="useravatar" style="background-image:url('.$avatar.')"></div>
 </select>
 <br>
 <a href="?pg=home&func=users/users_passmod" class="gomb3">Jelszó módosítása</a>
-<a href="?pg=home&func=users/users_profile" class="gomb3">Adatok módosítása</a><br>
+<a href="?pg=home&func=users/users_profile" class="gomb3">Adatok módosítása</a>
+<a href="?pg=home&func=users/users_creategroups" class="gomb3">Csoport hozzáadása</a><br>
 <hr>';
  
 ?>
