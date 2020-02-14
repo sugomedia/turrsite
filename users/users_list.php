@@ -9,11 +9,19 @@
     @require_once("functions.php");
     @require_once("database.php");
   }
-	
+
 	// itt hozzuk létre a saját adatbázis objektumunkat $db néven
   @$db = new db($dbhost, $dbuser, $dbpass, $dbname);
-
-  $db->query("SELECT ID, fullname, avatar, status FROM users WHERE status <> 0 ORDER BY last DESC LIMIT 0, 30");
+  if (isset($_SESSION['userfilter']))
+  {
+    $felt = "AND fullname LIKE '%".$_SESSION['userfilter']."%'";
+  }
+  else
+  {
+    $felt = '';
+  }
+  
+  $db->query("SELECT ID, fullname, avatar, status FROM users WHERE status <> 0 ".$felt." ORDER BY last DESC LIMIT 0, 30");
 
   foreach($db->queryresult as $value){
     $class = "";

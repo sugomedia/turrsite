@@ -1,6 +1,6 @@
 <?php
     class db{
-        public $version='v1.20';
+        public $version='v1.60';
         protected $dbhost;
         protected $dbuser;
         protected $dbpass;
@@ -113,6 +113,14 @@
                         if(in_array('deny', $actions)){
                             echo '<a href="?pg=events_friendDeny&denyID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-remove"></div></a>';
                         }
+
+                        if(in_array('r', $actions)){
+                            echo '<a href="?pg=events_friendRemove&removeID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-remove-sign"></div></a>';
+                        }
+
+                        if(in_array('ub', $actions)){
+                            echo '<a href="?pg=events_unBlock&unblockID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-ok-sign"></div></a>';
+                        }
                     }
 
                     echo '</div>';
@@ -121,8 +129,8 @@
                 echo $txt;
             }
             echo '</div></div></div>';
-        }
-        
+        } 
+
         public function toTable($param){
             if(!empty($param))
             {
@@ -133,19 +141,24 @@
             $fieldcount = $this->queryresult->field_count;
             $tablename = $fields[0]->table;
 
-			$primary_key = '';
-			foreach($fields as $field) 
-			{
-			    if ($field->flags & MYSQLI_PRI_KEY_FLAG) 
-			    { 
-			        $primary_key = $field->name; 
+            $primary_key = '';
+            foreach($fields as $field) 
+            {
+                if ($field->flags & MYSQLI_PRI_KEY_FLAG) 
+                { 
+                    $primary_key = $field->name; 
                     break;
-			    }
-			}
+                }
+            }
 
             echo '
                 <table class="table table-striped table-hover table-responsive">
                     <thead>
+                        <tr>
+                            <td colspan="'.sizeof($fields).'" class="r"> 
+                                <input type="text" id="quicksearch" placeholder="Keresés...">
+                            </td>
+                        </tr>
                         <tr>';
                             foreach($fields as $field)
                             {                    
