@@ -11,6 +11,7 @@ if(isset($_POST['modosit']))
     $fname=escapeshellcmd($_POST['fullname']);
     $email=escapeshellcmd($_POST['email']);
     $nem=$_POST['nem'];
+    $avatar=$_FILES['fileToUpload']['name'];
 
     //Teljes név módosítása
     $db->query("SELECT fullname, ID FROM users WHERE fullname = '$fname' AND ID=" . $_SESSION['uid']);
@@ -29,13 +30,19 @@ if(isset($_POST['modosit']))
    //Nem módosítása
     $db->query("UPDATE users SET gender='$nem' WHERE ID=" . $_SESSION['uid']);
     showSuccess("Az adataidat sikeresen megváltoztattad!");
+    // Képfeltöltés
+    if(!empty($avatar))
+    {
+      fajlfeltolt($_FILES['fileToUpload'],'target:avatar|maxsize:2|allow:jpg,png,bmp,jpeg|filename:'.$avatar);
+      $db->query("UPDATE users SET avatar='avatar/$avatar' WHERE ID=".$_SESSION['uid']);
+    }
 }
 
 $db->query("SELECT * FROM users WHERE ID=".$_SESSION['uid']);
 $res=$db->fetchAll();
     
 echo '
-  <form action="?pg=home&func=users/users_profile" method="POST">
+  <form action="?pg=home&func=users/users_profile" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label for="">Teljes név:</label>
     <input type="text" name="fullname" class="form-control" value="'.$res[0]['fullname'].'">
@@ -49,16 +56,49 @@ echo '
     <label for="">Nem változtatás:</label>
     <select name="nem" class="form-control">
     <option value="">Válasszon...</option>
-    <option value="man">Férfi</option>
-    <option value="women">Nő</option>
-    <option value="other">Egyéb</option>
+    <option value="ferfi" ';
+    if($res[0]['gender']=="ferfi")
+    {
+      echo 'selected';
+    }
+    echo'>Férfi</option>
+    <option value="no"
+    ';
+    if($res[0]['gender']=="no")
+    {
+      echo 'selected';
+    }
+    echo'
+    >Nő</option>
+    <option value="egyeb"
+    ';
+    if($res[0]['gender']=="egyeb")
+    {
+      echo 'selected';
+    }
+    echo'
+    >Egyéb</option>
 </select>
   </div>
+ 
+  <label for="">Profilkép Változtatása:</label>
+ <br /> ';
 
+if (empty($res[0]['avatar']))
+{
+  echo '<input type="file" name="fileToUpload" id="fileToUpload"><br />';
+}
+else
+{
+  echo'<img src="'.$res[0]['avatar'].'" class="img img-thumbnail"><br>
+  <a href="?pg=home&func=users/avatardel" class="btn btn-danger">Profilkép törlése</a><br><br> ';
+}
+
+
+echo '
   <div class="form-group">
     <input type="submit" name="modosit" value="Módosít" class="btn btn-primary">
   </div>
 </form>
   ';
-
   ?>
