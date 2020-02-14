@@ -14,6 +14,7 @@
     <li><a href="index.php?pg=home&func=messages/messages">Üzenetek
         <span class="badge szamlalo">'.$messagecount.'</span>
     </a></li>
+    <li><a href="index.php?pg=home&func=keszitok">Készitők </a></li>
     <li><a href="?pg=users_logout"> Kilépés </a></li>
 </ul>';
 ?>

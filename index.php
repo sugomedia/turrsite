@@ -2,7 +2,7 @@
 <!-- Bajai SZC Türr István Szakgimnáziuma -->
 <!-- Készítők:                          -->
 
-
+<!-- Deák Nándor -->
 <!-- Rekettye István -->
 <!-- Tábori Erik-->
 <!-- Varga Ervin -->
