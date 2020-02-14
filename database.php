@@ -1,6 +1,6 @@
 <?php
     class db{
-        public $version='v1.20';
+        public $version='v1.60';
         protected $dbhost;
         protected $dbuser;
         protected $dbpass;
@@ -74,46 +74,6 @@
         public function nextID(){
             return $this->connection->insert_id+1;
         }
-
-        public function usersConnectionList($what, $p, $c, $t, $txt){
-            if(!empty($p))
-            {
-                $actions=explode('|', $p);
-            }
-            if(empty($what)) $what = $this->queryresult;
-
-            echo '<div class="usersConnectionList"><div class="panel panel-'.$c.'"><div class="panel-heading">'.$t.'</div><div class="panel-body">';
-            
-            if(empty($txt)){ 
-                foreach($what as $value){
-                    if($value['avatar'] == ""){
-                        $avatar = $GLOBALS['basic'];
-                    } else {
-                        $avatar = $value['avatar'];
-                    }
-
-                    echo '<div class="subUsersConnectionList">
-                    <div class="userlistavatar" style="background-image:url('.$avatar.')"></div>
-                    <div class="userlistname">'.$value['fullname'].'</div>
-                    ';
-                    
-                    if(!empty($actions)){
-                        if(in_array('a', $actions)){
-                            echo '<a href="?pg=events_friendrequest&friendID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-plus"></div></a>';
-                        }
-
-                        if(in_array('b', $actions)){
-                            echo '<a href="?pg=events_blockUsers&blockID='.$value['ID'].'&p='.$GLOBALS['page'].'" > <div class="userlistActions glyphicon glyphicon-ban-circle"></div></a>';
-                        }
-                    }
-
-                    echo '</div>';
-                }
-            } else {
-                echo $txt;
-            }
-            echo '</div></div></div>';
-        }
         
         public function toTable($param){
             if(!empty($param))
@@ -125,19 +85,24 @@
             $fieldcount = $this->queryresult->field_count;
             $tablename = $fields[0]->table;
 
-			$primary_key = '';
-			foreach($fields as $field) 
-			{
-			    if ($field->flags & MYSQLI_PRI_KEY_FLAG) 
-			    { 
-			        $primary_key = $field->name; 
+            $primary_key = '';
+            foreach($fields as $field) 
+            {
+                if ($field->flags & MYSQLI_PRI_KEY_FLAG) 
+                { 
+                    $primary_key = $field->name; 
                     break;
-			    }
-			}
+                }
+            }
 
             echo '
                 <table class="table table-striped table-hover table-responsive">
                     <thead>
+                        <tr>
+                            <td colspan="'.sizeof($fields).'" class="r"> 
+                                <input type="text" id="quicksearch" placeholder="Keresés...">
+                            </td>
+                        </tr>
                         <tr>';
                             foreach($fields as $field)
                             {                    

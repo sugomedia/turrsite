@@ -34,6 +34,7 @@
 	<script type="text/javascript" src="js/jquery.canvasjs.min.js"></script>
 	<script type="text/javascript" src="js/statusUpdate.js"></script>
 	<script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript" src="js/myscripts.js"></script>
 	
 	<script type="text/javascript">
 

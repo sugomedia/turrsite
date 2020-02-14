@@ -2,10 +2,10 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: localhost
--- Létrehozás ideje: 2020. Feb 13. 13:04
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2020. Feb 14. 09:25
 -- Kiszolgáló verziója: 10.4.6-MariaDB
--- PHP verzió: 7.3.9
+-- PHP verzió: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `turrsite`
 --
-CREATE DATABASE IF NOT EXISTS `turrsite` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
-USE `turrsite`;
 
 -- --------------------------------------------------------
 
@@ -69,6 +67,36 @@ INSERT INTO `contacts` (`ID`, `userID`, `whoID`, `status`) VALUES
 (1, 10, 12, 1),
 (2, 10, 13, 1),
 (3, 10, 15, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `creators`
+--
+
+CREATE TABLE `creators` (
+  `ID` int(11) NOT NULL,
+  `nev` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
+  `evfolyam` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
+  `szak` varchar(20) COLLATE utf8_hungarian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `creators`
+--
+
+INSERT INTO `creators` (`ID`, `nev`, `evfolyam`, `szak`) VALUES
+(1, 'Nagyházi Szabolcs', '214B', 'tanár'),
+(2, 'Krizsák Zoltán', '214B', 'szoftverfejlesztő'),
+(3, 'Varga Ervin', '214B', 'szoftverfejlesztő'),
+(4, 'Török Tamás', '214B', 'szoftverfejlesztő'),
+(5, 'Tábori Erik', '214B', 'szoftverfejlesztő'),
+(6, 'Fuszenecker Fanni', '214B', 'szoftverfejlesztő'),
+(7, 'Lázár Krisztián', '214B', 'szoftverfejlesztő'),
+(8, 'Taskovics Péter', '214B', 'szoftverfejlesztő'),
+(9, 'Rekettye István', '214B', 'szoftverfejlesztő'),
+(10, 'Deák Nándor', '214B', 'szoftverfejlesztő'),
+(11, 'Trencsák Martin', '214B', 'szoftverfejlesztő');
 
 -- --------------------------------------------------------
 
@@ -323,6 +351,12 @@ ALTER TABLE `contacts`
   ADD KEY `userID` (`userID`);
 
 --
+-- A tábla indexei `creators`
+--
+ALTER TABLE `creators`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- A tábla indexei `events`
 --
 ALTER TABLE `events`
@@ -410,6 +444,12 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `contacts`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT a táblához `creators`
+--
+ALTER TABLE `creators`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT a táblához `events`
