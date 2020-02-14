@@ -34,6 +34,10 @@
 .userlistname{
   font-weight: bold;
 }
+.userlistname a{
+  color:black;
+  font-size: 130%;
+}
 
 .useravatar{
   width: 200px;
