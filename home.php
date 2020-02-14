@@ -41,7 +41,7 @@ echo '<span>'.$pagename.'</span><br><p>'.$title.'</p>';
       </div>
               
   </div>
-  <div id = "footer" class="col-xs-12">Lábléc</div>
+  <div id = "footer" class="col-xs-12"><?php echo $company.' - '.date("Y").'.'; ?></div>
 </div>
 
 

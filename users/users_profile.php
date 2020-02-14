@@ -54,11 +54,14 @@ echo '
     <option value="other">Egyéb</option>
 </select>
   </div>
-
+  <form id="form2" action="upload.php" method="POST">
+  <label for="">Profilkép Változtatása:</label>
+ <br />
+<input type="file" name="fileToUpload" id="fileToUpload"><br />
   <div class="form-group">
     <input type="submit" name="modosit" value="Módosít" class="btn btn-primary">
   </div>
 </form>
   ';
-
   ?>
+ 
