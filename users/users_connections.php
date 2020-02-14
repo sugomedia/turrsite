@@ -1,4 +1,6 @@
-<h3>Kapcsolatok</h3><hr>
+<h3>Kapcsolatok
+<input type="text" id="quicksearch2" class="usersearch" placeholder="Keresés...">
+</h3><hr>
 <?php
     //0 = block; 1 = request; 2 = friend
 
@@ -44,7 +46,7 @@
             users.fullname,
             users.avatar
             FROM contacts
-            INNER JOIN users ON users.ID = userID
+            INNER JOIN users ON users.ID = whoID
             WHERE (userID = $uid OR whoID = $uid) AND contacts.status = 2");
 
         $db->usersConnectionList('','r', 'success', 'Barátlista', '');
@@ -103,7 +105,7 @@
             users.fullname,
             users.avatar
             FROM contacts
-            INNER JOIN users ON users.ID = userID
+            INNER JOIN users ON users.ID = whoID
             WHERE (userID = $uid OR whoID = $uid) AND contacts.status = 0");
 
         $db->usersConnectionList('','ub', 'danger', 'Blockolt felhasználók', '');
