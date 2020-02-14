@@ -31,11 +31,11 @@ echo '
   <form action="?pg=home&func=users/users_creategroups" method="POST">
   <div class="form-group">
     <label for="">Csoportnév:</label>
-    <input type="text" name="group" class="form-control" value="Groupname">
+    <input type="text" name="group" class="form-control" placeholder="Groupname">
   </div>
   <div class="form-group">
     <label for="">Megjegyzés:</label>
-    <input type="text" name="comment" class="form-control" value="Comment">
+    <input type="text" name="comment" class="form-control" placeholder="Comment">
   </div>
 
   

@@ -51,7 +51,7 @@
 }
 
 .username{
-  color:#fff;
+  color:black;
   font-weight: bold;
   font-size: 130%;
   width: 100%;
@@ -102,4 +102,11 @@
 
 .usersearch{
   width: 100%;
+}
+.groups{
+  border-bottom:2px dotted #6c756e;
+  padding: 5px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

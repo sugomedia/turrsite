@@ -23,6 +23,7 @@
   
   $db->query("SELECT ID, fullname, avatar, status FROM users WHERE status <> 0 ".$felt." ORDER BY last DESC LIMIT 0, 30");
 
+  echo'';
   foreach($db->queryresult as $value){
     $class = "";
     $msg = "";
